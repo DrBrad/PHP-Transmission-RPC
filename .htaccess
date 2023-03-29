@@ -1,0 +1,26 @@
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
+
+RewriteEngine On
+RewriteBase /
+
+RedirectMatch 403 config.ini
+
+#REQUIRE HTTPS
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#REQUIRE HTTPS
+RewriteRule ^watch/(.*)$ watch.php?id=$1 [L]
+
+#.PHP REMOVAL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+ExpiresActive on
+ 
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
