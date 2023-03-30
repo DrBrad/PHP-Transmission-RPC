@@ -17,7 +17,7 @@
 		const RPC_LT_14_TR_STATUS_SEED       = 8;
 		const RPC_LT_14_TR_STATUS_STOPPED    = 16;
 
-		private $url, $username, $password, $sessionId;
+		private $url, $username, $password, $sessionId, $rpcVersion;
 
 		private $contextOptions = [
 			'http' => [
@@ -34,6 +34,7 @@
 			$this->username = $username;
 			$this->password = $password;
 			$this->initSessionId();
+			$this->rpcVersion = $this->sessionGet()['arguments']['rpc-version'];
 		}
 
 		public function startTorrents($ids){
@@ -193,28 +194,28 @@
 			return $this->request('session-stats', []);
 		}
 
-		public function getStatusString ($status){
-			if($this->rpc_version < 14){
-
+		public function getStatusString($status){
+			if($this->rpcVersion < 14){
 				switch($status){
-					case self::RPC_LT_14_TR_STATUS_CHECK_WAIT:
+					case $this->RPC_LT_14_TR_STATUS_CHECK_WAIT:
 						return 'Waiting to verify local files';
 
-					case self::RPC_LT_14_TR_STATUS_CHECK:
+					case $this->RPC_LT_14_TR_STATUS_CHECK:
 						return 'Verifying local files';
 
-					case self::RPC_LT_14_TR_STATUS_DOWNLOAD:
+					case $this->RPC_LT_14_TR_STATUS_DOWNLOAD:
 						return 'Downloading';
 
-					case self::RPC_LT_14_TR_STATUS_SEED:
+					case $this->RPC_LT_14_TR_STATUS_SEED:
 						return 'Seeding';
 
-					case self::RPC_LT_14_TR_STATUS_STOPPED:
+					case $this->RPC_LT_14_TR_STATUS_STOPPED:
 						return 'Stopped';
 
 					default:
 						return 'Unknown';
 				}
+
 			}else{
 				switch($status){
 					case self::TR_STATUS_CHECK_WAIT:
