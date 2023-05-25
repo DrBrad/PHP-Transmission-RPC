@@ -128,7 +128,7 @@
 		}
 
 		public function addFile($torrent, $save = '', $extra = []){
-			$extra = ['download-dir'];
+			$extra['download-dir'] = $save;
 			$extra['filename'] = $torrent;
 
 			return $this->request('torrent-add', $extra);
