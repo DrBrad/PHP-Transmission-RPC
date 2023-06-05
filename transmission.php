@@ -225,25 +225,25 @@
 
 			}else{
 				switch($status){
-					case self::TR_STATUS_CHECK_WAIT:
+					case $this->TR_STATUS_CHECK_WAIT:
 						return 'Waiting to verify local files';
 
-					case self::TR_STATUS_CHECK:
+					case $this->TR_STATUS_CHECK:
 						return 'Verifying local files';
 
-					case self::TR_STATUS_DOWNLOAD:
+					case $this->TR_STATUS_DOWNLOAD:
 						return 'Downloading';
 
-					case self::TR_STATUS_SEED:
+					case $this->TR_STATUS_SEED:
 						return 'Seeding';
 
-					case self::TR_STATUS_STOPPED:
+					case $this->TR_STATUS_STOPPED:
 						return 'Stopped';
 
-					case self::TR_STATUS_SEED_WAIT:
+					case $this->TR_STATUS_SEED_WAIT:
 						return 'Queued for seeding';
 
-					case self::TR_STATUS_DOWNLOAD_WAIT:
+					case $this->TR_STATUS_DOWNLOAD_WAIT:
 						return 'Queued for download';
 
 					default:
