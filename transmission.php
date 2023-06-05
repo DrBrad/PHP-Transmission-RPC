@@ -204,19 +204,19 @@
 		public function getStatusString($status){
 			if($this->rpcVersion < 14){
 				switch($status){
-					case $this->RPC_LT_14_TR_STATUS_CHECK_WAIT:
+					case self::RPC_LT_14_TR_STATUS_CHECK_WAIT:
 						return 'Waiting to verify local files';
 
-					case $this->RPC_LT_14_TR_STATUS_CHECK:
+					case self::RPC_LT_14_TR_STATUS_CHECK:
 						return 'Verifying local files';
 
-					case $this->RPC_LT_14_TR_STATUS_DOWNLOAD:
+					case self::RPC_LT_14_TR_STATUS_DOWNLOAD:
 						return 'Downloading';
 
-					case $this->RPC_LT_14_TR_STATUS_SEED:
+					case self::RPC_LT_14_TR_STATUS_SEED:
 						return 'Seeding';
 
-					case $this->RPC_LT_14_TR_STATUS_STOPPED:
+					case self::RPC_LT_14_TR_STATUS_STOPPED:
 						return 'Stopped';
 
 					default:
@@ -225,25 +225,25 @@
 
 			}else{
 				switch($status){
-					case $this->TR_STATUS_CHECK_WAIT:
+					case self::TR_STATUS_CHECK_WAIT:
 						return 'Waiting to verify local files';
 
-					case $this->TR_STATUS_CHECK:
+					case self::TR_STATUS_CHECK:
 						return 'Verifying local files';
 
-					case $this->TR_STATUS_DOWNLOAD:
+					case self::TR_STATUS_DOWNLOAD:
 						return 'Downloading';
 
-					case $this->TR_STATUS_SEED:
+					case self::TR_STATUS_SEED:
 						return 'Seeding';
 
-					case $this->TR_STATUS_STOPPED:
+					case self::TR_STATUS_STOPPED:
 						return 'Stopped';
 
-					case $this->TR_STATUS_SEED_WAIT:
+					case self::TR_STATUS_SEED_WAIT:
 						return 'Queued for seeding';
 
-					case $this->TR_STATUS_DOWNLOAD_WAIT:
+					case self::TR_STATUS_DOWNLOAD_WAIT:
 						return 'Queued for download';
 
 					default:
