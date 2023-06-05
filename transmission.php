@@ -109,10 +109,12 @@
 
 		public function listTorrents($fields = []){
 			$total = $this->sessionStats()['arguments']['torrentCount'];
+			/*
 			$ids = [];
 			for($i = 0; $i < $total; $i++){
-				$ids[$i] = $i+1;
+				$ids[$i] = $i;
 			}
+			*/
 
 			return $this->request('torrent-get', [
 				'fields' => [
@@ -121,9 +123,14 @@
 					'status',
 					'doneDate',
 					'haveValid',
-					'totalSize'
-				],
-				'ids' => $ids
+					'totalSize',
+
+					'percentDone',
+					'peersConnected',
+
+					'eta'
+				]//,
+				//'ids' => $ids
 			]);
 		}
 
